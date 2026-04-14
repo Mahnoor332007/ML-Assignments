@@ -1,0 +1,67 @@
+{
+    "KNN": {
+        "best_params": {
+            "n_neighbors": 7,
+            "p": 1,
+            "weights": "distance"
+        },
+        "accuracy": 0.9469,
+        "precision": 0.9705,
+        "recall": 0.9583,
+        "f1_score": 0.9644,
+        "confusion_matrix": [
+            [
+                73,
+                7
+            ],
+            [
+                10,
+                230
+            ]
+        ]
+    },
+    "Decision Tree": {
+        "best_params": {
+            "criterion": "gini",
+            "max_depth": 10,
+            "min_samples_split": 2
+        },
+        "accuracy": 0.9031,
+        "precision": 0.9409,
+        "recall": 0.9292,
+        "f1_score": 0.935,
+        "confusion_matrix": [
+            [
+                66,
+                14
+            ],
+            [
+                17,
+                223
+            ]
+        ]
+    },
+    "Naive Bayes": {
+        "best_params": {
+            "var_smoothing": 1e-09
+        },
+        "accuracy": 0.8719,
+        "precision": 0.927,
+        "recall": 0.9,
+        "f1_score": 0.9133,
+        "confusion_matrix": [
+            [
+                63,
+                17
+            ],
+            [
+                24,
+                216
+            ]
+        ]
+    },
+    "Best Model": {
+        "name": "KNN",
+        "f1_score": 0.9644
+    }
+}

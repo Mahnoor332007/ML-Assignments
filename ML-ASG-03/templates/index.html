@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f2f2f2;
+        }
+
+        .box {
+            width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        textarea {
+            width: 90%;
+            height: 100px;
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: blue;
+            color: white;
+            border: none;
+        }
+
+        h3 {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Sentiment Analysis</h2>
+
+    <form action="/predict" method="post">
+        <textarea name="text" placeholder="Enter text here...">{{ text }}</textarea><br>
+        <button type="submit">Predict</button>
+    </form>
+
+    <h3>{{ result }}</h3>
+</div>
+
+</body>
+</html>

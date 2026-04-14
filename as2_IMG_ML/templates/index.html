@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Brain Tumor Prediction - Assignment 02</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f2f2f2;
+            margin-top: 30px;
+        }
+
+        .box {
+            width: 900px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input, button {
+            margin-top: 10px;
+            padding: 10px;
+        }
+
+        .result-box {
+            margin-top: 20px;
+            text-align: left;
+            display: inline-block;
+            width: 90%;
+        }
+
+        h3 {
+            color: green;
+            margin: 8px 0;
+        }
+
+        h2.best {
+            color: red;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 25px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #999;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #ddd;
+        }
+
+        .cm-box {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .cm-item {
+            background: #fafafa;
+            border: 1px solid #ccc;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
+        .params {
+            font-size: 14px;
+            color: #333;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Brain Tumor MRI Prediction</h2>
+        <p>Assignment 02: KNN, Decision Tree, Naive Bayes Comparison</p>
+
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" required><br>
+            <button type="submit">Predict</button>
+        </form>
+
+        <div class="result-box">
+            <h3>{{ knn_result }}</h3>
+            <h3>{{ dt_result }}</h3>
+            <h3>{{ nb_result }}</h3>
+        </div>
+
+        <h2 class="best">{{ best_result }}</h2>
+
+        <h2>Model Metrics</h2>
+        <table>
+            <tr>
+                <th>Model</th>
+                <th>Accuracy</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1 Score</th>
+            </tr>
+            <tr>
+                <td>KNN</td>
+                <td>{{ metrics["KNN"]["accuracy"] }}</td>
+                <td>{{ metrics["KNN"]["precision"] }}</td>
+                <td>{{ metrics["KNN"]["recall"] }}</td>
+                <td>{{ metrics["KNN"]["f1_score"] }}</td>
+            </tr>
+            <tr>
+                <td>Decision Tree</td>
+                <td>{{ metrics["Decision Tree"]["accuracy"] }}</td>
+                <td>{{ metrics["Decision Tree"]["precision"] }}</td>
+                <td>{{ metrics["Decision Tree"]["recall"] }}</td>
+                <td>{{ metrics["Decision Tree"]["f1_score"] }}</td>
+            </tr>
+            <tr>
+                <td>Naive Bayes</td>
+                <td>{{ metrics["Naive Bayes"]["accuracy"] }}</td>
+                <td>{{ metrics["Naive Bayes"]["precision"] }}</td>
+                <td>{{ metrics["Naive Bayes"]["recall"] }}</td>
+                <td>{{ metrics["Naive Bayes"]["f1_score"] }}</td>
+            </tr>
+        </table>
+
+        <div class="cm-box">
+            <h2>Confusion Matrices</h2>
+
+            <div class="cm-item">
+                <h3>KNN Confusion Matrix</h3>
+                <p>{{ metrics["KNN"]["confusion_matrix"] }}</p>
+                <p class="params"><strong>Best Parameters:</strong> {{ metrics["KNN"]["best_params"] }}</p>
+            </div>
+
+            <div class="cm-item">
+                <h3>Decision Tree Confusion Matrix</h3>
+                <p>{{ metrics["Decision Tree"]["confusion_matrix"] }}</p>
+                <p class="params"><strong>Best Parameters:</strong> {{ metrics["Decision Tree"]["best_params"] }}</p>
+            </div>
+
+            <div class="cm-item">
+                <h3>Naive Bayes Confusion Matrix</h3>
+                <p>{{ metrics["Naive Bayes"]["confusion_matrix"] }}</p>
+                <p class="params"><strong>Best Parameters:</strong> {{ metrics["Naive Bayes"]["best_params"] }}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
